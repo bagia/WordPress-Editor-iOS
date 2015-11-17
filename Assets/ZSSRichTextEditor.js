@@ -107,6 +107,14 @@ ZSSEditor.init = function(callbacker, logger) {
         document.execCommand('insertText', false, plainText);
     });
 
+    // Canvas
+    $(document).on('touchstart', '.fastCanvas', function (evt) {
+        ZSSEditor.canvasTouchStart($(this).get(0), evt.originalEvent);
+    });
+    $(document).on('touchmove', '.fastCanvas', function (evt) {
+        ZSSEditor.canvasTouchMove($(this).get(0), evt.originalEvent);
+    });
+
     this.domLoadedCallback();
 
 }; //end
@@ -644,6 +652,41 @@ ZSSEditor.quickLink = function() {
 	var html_code = '<a href="' + link_url + '">' + sel + '</a>';
 	ZSSEditor.insertHTML(html_code);
 };
+
+// MARK: - Canvas
+ZSSEditor.insertCanvas = function () {
+    var html_code = '<canvas class="fastCanvas" width="500" height="200"></canvas>';
+    ZSSEditor.insertHTML(html_code);
+};
+
+ZSSEditor.canvasTouchStart = function(canvas, event) {
+    var e = this.canvasPrepareEvent(canvas, event);
+    e.context.beginPath();
+    e.context.moveTo(e.x, e.y);
+};
+
+ZSSEditor.canvasTouchMove = function(canvas, event) {
+    var e = this.canvasPrepareEvent(canvas, event);
+    e.context.lineTo(e.x, e.y);
+    e.context.stroke();
+};
+
+ZSSEditor.canvasPrepareEvent = function(canvas, event) {
+    event.preventDefault();
+
+    var targetTouch = event.targetTouches[0];
+    var x = targetTouch.screenX - targetTouch.target.offsetLeft;
+    var y = targetTouch.screenY - targetTouch.target.offsetTop;
+
+    var context = canvas.getContext('2d');
+
+    return {context, x, y};
+};
+
+ZSSEditor.canvasSave = function(canvas) {
+    canvas.save();
+};
+
 
 // MARK: - Blockquotes
 

@@ -256,6 +256,10 @@ stylesForCurrentSelection:(NSArray*)styles;
 - (void)setSelectedColor:(UIColor*)color
 					 tag:(int)tag;
 
+#pragma mark - Canvas
+
+- (void)insertCanvas;
+
 #pragma mark - Images
 
 /**

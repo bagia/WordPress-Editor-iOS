@@ -408,3 +408,7 @@ div.field[placeholderText][contenteditable=true]:empty:focus:before {
     font-style: italic;
     cursor: none;
 }
+
+canvas {
+    border: 1px dashed lightgrey;
+}

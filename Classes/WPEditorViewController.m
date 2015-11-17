@@ -407,6 +407,12 @@ NSInteger const WPLinkAlertViewTag = 92;
 
 #pragma mark - WPEditorFormatBarViewDelegate
 
+- (void)editorToolbarView:(WPEditorFormatbarView*)editorToolbarView
+             insertCanvas:(UIBarButtonItem *)barButtonItem
+{
+    [self insertCanvas];
+}
+
 - (void)editorToolbarView:(WPEditorFormatbarView *)editorToolbarView
            showHTMLSource:(UIBarButtonItem *)barButtonItem
 {
@@ -798,6 +804,11 @@ NSInteger const WPLinkAlertViewTag = 92;
 - (void)updateImage:(NSString *)url alt:(NSString *)alt
 {
     [self.editorView updateImage:url alt:alt];
+}
+
+- (void)insertCanvas
+{
+    [self.editorView insertCanvas];
 }
 
 #pragma mark - UIPasteboard interaction

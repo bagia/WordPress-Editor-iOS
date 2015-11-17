@@ -1657,6 +1657,13 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 	[self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.quickLink();"];
 }
 
+#pragma mark - Editor: Canvas
+
+- (void)insertCanvas
+{
+    [self.webView stringByEvaluatingJavaScriptFromString:@"ZSSEditor.insertCanvas();"];
+}
+
 #pragma mark - Editor: HTML interaction
 
 // Inserts HTML at the caret position

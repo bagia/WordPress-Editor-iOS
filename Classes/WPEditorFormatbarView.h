@@ -103,6 +103,14 @@ typedef enum
 - (void)editorToolbarView:(WPEditorFormatbarView*)editorToolbarView
            showHTMLSource:(UIBarButtonItem *)barButtonItem;
 
+/**
+ *  @brief      Tell the delegate the Insert Canvas button was pressed.
+ *
+ *  @param      editorToolbarView       The toolbar view calling this method.  Will never be nil.
+ *  @param      barButtonItem           The pressed bar button item.  Will never be nil.
+ */
+- (void)editorToolbarView:(WPEditorFormatbarView*)editorToolbarView
+             insertCanvas:(UIBarButtonItem *)barButtonItem;
 @end
 
 
